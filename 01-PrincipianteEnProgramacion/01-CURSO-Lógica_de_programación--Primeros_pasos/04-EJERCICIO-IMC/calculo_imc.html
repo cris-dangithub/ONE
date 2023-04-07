@@ -1,0 +1,19 @@
+<meta charset="UTF-8" />
+
+<script>
+  function saltarLinea(n = 1) {
+    document.write("<br>".repeat(n));
+  }
+  function imprimir(text) {
+    document.write(text);
+    saltarLinea();
+  }
+  function calcularIMC(peso, altura, nombre) {
+    const imcCris = peso / altura ** 2;
+    nombre
+      ? imprimir("El IMC de " + nombre + " es " + imcCris.toFixed(2))
+      : imprimir("El IMC calculado es " + imcCris.toFixed(2));
+  }
+  calcularIMC(71, 1.64);
+  calcularIMC(71, 1.64, "Javier");
+</script>
