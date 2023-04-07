@@ -16,4 +16,11 @@
   }
   calcularIMC(71, 1.64);
   calcularIMC(71, 1.64, "Javier");
+
+  document.write("<hr>");
+  imprimir("<h3>Interactuando con el usuario</h3>");
+  const nombre = prompt("Informe su nombre");
+  const peso = +prompt(nombre + ", Informe su peso");
+  const altura = +prompt(nombre + ", Informe su altura");
+  calcularIMC(peso, altura, nombre);
 </script>
