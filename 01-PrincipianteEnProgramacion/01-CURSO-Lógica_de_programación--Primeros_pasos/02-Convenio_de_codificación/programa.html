@@ -40,9 +40,27 @@
   var promedio = (juanAge + pabloAge + pedroAge) / 3;
   document.write(`El promedio de las 3 edades es ${Math.round(promedio)}`);
   // "Mejorar el mantenimiento del código"
-  document.write("<hr>")
+  document.write("<hr>");
   document.write("<h3>Mejorar el mantenimiento del código</h3>");
-  var saltoLinea = "<br><br><br>"
-  document.write(saltoLinea)
-  document.write("Aca tenemos saltos de linea")
+  var saltoLinea = "<br><br><br>";
+  document.write(saltoLinea);
+  document.write("Aca tenemos saltos de linea");
+  document.write(saltoLinea);
+  document.write("Otro salto de linea");
+  // "Funciones" y "Funciones con parámetros"
+  function saltarLinea(n = 1) {
+    document.write("<br>".repeat(n));
+  }
+  function imprimir(text) {
+    document.write(text)
+  }
+  imprimir("<hr>");
+  imprimir("<h3>Funciones y funciones con parámetros</h3>");
+  imprimir("Desde acá comenzamos con 1 salto de linea usando la función saltarLinea");
+  saltarLinea()
+  imprimir("Ahora quiero 2")
+  saltarLinea(2)
+  imprimir("Ahora quiero 5")
+  saltarLinea(5)
+  imprimir("Fin demostración")
 </script>
