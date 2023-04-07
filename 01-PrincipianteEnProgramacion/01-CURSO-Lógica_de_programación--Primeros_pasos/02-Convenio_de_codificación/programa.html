@@ -23,7 +23,19 @@
   // "Reduciendo alteraciones"
   document.write("<hr>");
   var currentYear = 2023;
-  document.write("Juan tiene: " + (currentYear - 2000) + " años <br>");
-  document.write("Pablo tiene: " + (currentYear - 1995) + " años <br>");
-  document.write("Pedro tiene: " + (currentYear - 1987) + " años <br>");
+
+  // "Variables"
+  document.write("<hr>");
+  var name1 = "Juan";
+  var name2 = "Pablo";
+  var name3 = "Pedro";
+
+  document.write(name1 + " tiene: " + (currentYear - 2000) + " años <br>");
+  document.write(name2 + " tiene: " + (currentYear - 1995) + " años <br>");
+  document.write(name3 + " tiene: " + (currentYear - 1987) + " años <br>");
+  var juanAge = currentYear - 2000;
+  var pabloAge = currentYear - 1995;
+  var pedroAge = currentYear - 1987;
+  var promedio = (juanAge + pabloAge + pedroAge) / 3;
+  document.write(`El promedio de las 3 edades es ${Math.round(promedio)}`);
 </script>
