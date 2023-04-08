@@ -10,10 +10,17 @@
     document.write(text);
     saltarLinea();
   }
+  function showResults(result) {
+    return `El equipo está ${result} que el año pasado`;
+  }
 
   const victories = +prompt("Informe la cantidad de victorias");
   const defeats = +prompt("Informe la cantidad de derrotas");
   const totalScore = victories * 3 + defeats;
-
+  const lastScoreYear = 28;
+  
   imprimir("El total de puntos es de " + totalScore);
+  if (totalScore > lastScoreYear) imprimir(showResults("mejor"));
+  if (totalScore < lastScoreYear) imprimir(showResults("peor"));
+  if (totalScore === lastScoreYear) imprimir(showResults("igual"));
 </script>
