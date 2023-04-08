@@ -1,0 +1,30 @@
+<meta charset="UTF-8" />
+
+<script>
+  const saltarLinea = (n = 1) => {
+    document.write("<br>".repeat(n));
+  };
+  const imprimir = (text) => {
+    document.write(text);
+    saltarLinea();
+  };
+  const calcularIMC = (peso, altura) => peso / altura ** 2;
+
+  calcularIMC(71, 1.64);
+  calcularIMC(71, 1.64, "Javier");
+
+  document.write("<hr>");
+  imprimir("<h3>Interactuando con el usuario</h3>");
+  const nombre = prompt("Informe su nombre");
+  const peso = +prompt((nombre && nombre + ", ") + "Informe su peso");
+  const altura = +prompt((nombre && nombre + ", ") + "Informe su altura");
+  const imc = calcularIMC(peso, altura);
+  nombre
+    ? imprimir("El IMC de " + nombre + " es " + imc.toFixed(2))
+    : imprimir("El IMC calculado es " + imc.toFixed(2));
+
+  if (imc < 18.5) imprimir("Insuficiencia ponderal");
+  if (imc >= 18.5 && imc < 25) imprimir("IMC Dentro del intervalo normal");
+  if (imc >= 25 && imc < 30) imprimir("El usuario tiene sobrepeso");
+  if (imc >= 30) imprimir("El usuario tiene obesidad");
+</script>
