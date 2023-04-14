@@ -9,9 +9,18 @@
     saltarLinea();
   };
   const numeroAleatorio = (max) => Math.round(Math.random() * max);
+  const intentos = 3;
+  let isSuccess = false;
   const numeroPensado = numeroAleatorio(10);
-  const numeroLanzado = +prompt("Ingrese un número del 0-10");
-  numeroPensado === numeroLanzado
-    ? imprimir("Has adivinado el número")
-    : imprimir("Usted erró, el número pensado fue: " + numeroPensado);
+  for (let i = 1; i <= intentos; i++) {
+    numeroLanzado = +prompt("Ingrese un número del 0-10");
+    if (numeroPensado === numeroLanzado) {
+      imprimir("Has adivinado el número en el intento " + i);
+      isSuccess = true;
+      break;
+    }
+    alert("Error en el intento " + i);
+  }
+  if (!isSuccess)
+    imprimir("Usted erró, el número pensado fue: " + numeroPensado);
 </script>
