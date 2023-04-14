@@ -8,9 +8,13 @@
     } else {
       alert("Usted erró");
     }
+    input.value = "";
+    input.focus();
   }
-  const secret = 5;
+  const numeroAleatorio = (max) => Math.round(Math.random() * max);
+  const secret = numeroAleatorio(10);
   const input = document.querySelector("input");
   const button = document.querySelector("button");
+  input.focus();
   button.onclick = () => verify(secret, input);
 </script>
