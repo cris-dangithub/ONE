@@ -3,13 +3,13 @@
 <button>Verificar si acertó el secreto</button>
 <script>
   function genSecrets(quantity, maxRandomRange = 10) {
-    if (quantity > maxRandomRange + 1) return;
+    if (quantity > maxRandomRange) return;
     const secret = [];
     for (let i = 0; i < quantity; i++) {
       let num;
       while (true) {
         num = numeroAleatorio(maxRandomRange);
-        if (!secret.includes(num)) break;
+        if (!secret.includes(num) && num !== 0) break;
       }
       secret.push(num);
     }
@@ -32,11 +32,22 @@
   function numeroAleatorio(max) {
     return Math.round(Math.random() * max);
   }
+  const saltarLinea = (n = 1) => {
+    document.write("<br>".repeat(n));
+  };
+  const imprimir = (text) => {
+    document.write(text);
+    saltarLinea();
+  };
 
-  const secrets = genSecrets(11, 10);
+  const secrets = genSecrets(5);
   console.log(secrets);
   const input = document.querySelector("input");
   const button = document.querySelector("button");
   input.focus();
-  button.onclick = () => verify(secrets, input);
+  if (!secrets) {
+    button.onclick = () => alert("Has introduciddo mal los datos de entrada");
+  } else {
+    button.onclick = () => verify(secrets, input);
+  }
 </script>
