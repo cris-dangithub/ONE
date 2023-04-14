@@ -1,0 +1,16 @@
+<meta charset="UTF-8" />
+<input type="text" />
+<button>Verificar si acertó el secreto</button>
+<script>
+  function verify(secret, input) {
+    if (secret === +input.value) {
+      alert("Usted acertó");
+    } else {
+      alert("Usted erró");
+    }
+  }
+  const secret = 5;
+  const input = document.querySelector("input");
+  const button = document.querySelector("button");
+  button.onclick = () => verify(secret, input);
+</script>
