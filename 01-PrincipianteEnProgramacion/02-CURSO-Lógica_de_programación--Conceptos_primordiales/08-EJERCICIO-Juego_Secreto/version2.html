@@ -3,14 +3,16 @@
 <button>Verificar si acertó el secreto</button>
 <script>
   function verify(secrets, input) {
+    let isSuccess = false;
     for (let secret of secrets) {
       if (secret === +input.value) {
         alert("Usted acertó en " + secret);
+        isSuccess = true;
         break;
-      } else {
-        alert("Usted erró");
       }
     }
+    if (!isSuccess) alert("Usted erró");
+
     input.value = "";
     input.focus();
   }
