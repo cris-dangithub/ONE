@@ -2,6 +2,19 @@
 <input type="text" />
 <button>Verificar si acertó el secreto</button>
 <script>
+  function genSecrets(quantity, maxRandomRange = 10) {
+    if (quantity > maxRandomRange + 1) return;
+    const secret = [];
+    for (let i = 0; i < quantity; i++) {
+      let num;
+      while (true) {
+        num = numeroAleatorio(maxRandomRange);
+        if (!secret.includes(num)) break;
+      }
+      secret.push(num);
+    }
+    return secret;
+  }
   function verify(secrets, input) {
     let isSuccess = false;
     for (let secret of secrets) {
@@ -16,8 +29,12 @@
     input.value = "";
     input.focus();
   }
-  const numeroAleatorio = (max) => Math.round(Math.random() * max);
-  const secrets = [3, 5, 6, 7];
+  function numeroAleatorio(max) {
+    return Math.round(Math.random() * max);
+  }
+
+  const secrets = genSecrets(11, 10);
+  console.log(secrets);
   const input = document.querySelector("input");
   const button = document.querySelector("button");
   input.focus();
