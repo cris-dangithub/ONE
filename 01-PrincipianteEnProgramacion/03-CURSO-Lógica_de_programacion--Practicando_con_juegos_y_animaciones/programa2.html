@@ -1,0 +1,17 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+  function dibujarCuadrado(color, posY, nX = 1) {
+    const pantalla = document.querySelector("canvas");
+    const pincel = pantalla.getContext("2d");
+    for (let i = 0; i < nX; i++) {
+      pincel.fillStyle = color;
+      pincel.fillRect(i * 50, posY, 50, 50);
+      pincel.strokeRect(i * 50, posY, 50, 50);
+    }
+  }
+
+  dibujarCuadrado("red", 0, 12);
+  dibujarCuadrado("yellow", 50, 12);
+  dibujarCuadrado("green", 100, 12);
+</script>
