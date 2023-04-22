@@ -1,0 +1,43 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  // Uso del pincel para cambiar el fondo de todo el canvas
+  const pantalla = document.querySelector("canvas");
+  const pincel = pantalla.getContext("2d");
+
+  pincel.fillStyle = "lightgrey";
+  pincel.fillRect(0, 0, 600, 400);
+  const color = ["blue", "red", "green"];
+  let index = 0;
+
+  // Implementar una función dentro del canvas
+  function exibirAlerta(event) {
+    console.log(event);
+
+    // Una forma de obtener las coordenadas en "x" y "y" del click:
+    // const x = event.pageX - pantalla.offsetLeft;
+    // const y = event.pageY - pantalla.offsetTop;
+
+    // Otra forma usando las propiedades del event:
+    const { offsetX, offsetY } = event;
+    alert(`Usted hizo click en ${offsetX}, ${offsetY}`);
+  }
+
+  function dibujarCirculo(event) {
+    // Obtención de pantalla y creación del pincel
+    const { offsetX, offsetY } = event;
+
+    pincel.fillStyle = color[index];
+    pincel.beginPath();
+    pincel.arc(offsetX, offsetY, 15, 0, 2 * Math.PI);
+    pincel.fill();
+  }
+
+  function alterarColor(event) {
+    index++;
+    if (color.length === index) index = 0;
+    
+  }
+  pantalla.onclick = dibujarCirculo;
+  pantalla.oncontextmenu = alterarColor;
+</script>
