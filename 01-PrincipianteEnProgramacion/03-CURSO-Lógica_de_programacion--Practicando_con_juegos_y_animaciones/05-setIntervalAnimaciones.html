@@ -1,0 +1,63 @@
+<canvas width="600" height="400"> </canvas>
+<button class="down">Ir abajo</button>
+<button class="up">Ir arriba</button>
+<button class="left">Ir izquierda</button>
+<button class="right">Ir derecha</button>
+<script>
+  function drawBackground() {
+    pincel.fillStyle = "lightgrey";
+    pincel.fillRect(0, 0, 600, 400);
+  }
+  function drawCircle(x, y, radio) {
+    pincel.fillStyle = "blue";
+    pincel.beginPath();
+    pincel.arc(x, y, radio, 0, 2 * Math.PI);
+    pincel.fill();
+  }
+  function clearWindow() {
+    pincel.clearRect(0, 0, 600, 400);
+    drawBackground();
+  }
+  function moveCircle(direction) {
+    clearInterval(interval);
+    interval = setInterval(() => {
+      clearWindow();
+      drawCircle(x, y, 20);
+      direction();
+    }, 10);
+  }
+  function goRight() {
+    x++;
+    if (x == 580) clearInterval(interval);
+  }
+  function goDown() {
+    y++;
+    if (y >= 380) clearInterval(interval);
+  }
+  function goUp() {
+    y--;
+    if (y <= 20) clearInterval(interval);
+  }
+  function goLeft() {
+    x--;
+    if (x <= 20) clearInterval(interval);
+  }
+  // Obtención de pantalla y creación del pincel
+  const pantalla = document.querySelector("canvas");
+  const pincel = pantalla.getContext("2d");
+  const buttonsMove = document.querySelectorAll("button");
+  const functionsMove = [goDown, goUp, goLeft, goRight];
+
+  buttonsMove.forEach((button, index) => {
+    button.onclick = () => moveCircle(functionsMove[index]);
+  });
+
+  // Uso del pincel para cambiar el fondo de todo el canvas
+  drawBackground();
+
+  let x = 20;
+  let y = 20;
+  let interval;
+  // Inicio de círculo
+  drawCircle(x, y, 20);
+</script>
