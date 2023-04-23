@@ -8,7 +8,8 @@
   height="400"
 >
 </canvas>
-
+<h1>Puntaje:</h1>
+<div></div>
 <script>
   function drawBackground() {
     pincel.fillStyle = "lightgrey";
@@ -37,24 +38,44 @@
     const { offsetX, offsetY } = event;
     const diffX = Math.abs(offsetX - x);
     const diffY = Math.abs(offsetY - y);
-    // first conditions
-    const conditionX1 = diffX >= 0 && diffX <= 20;
-    const conditionY1 = diffY >= 0 && diffY <= 20;
+    console.log({ diffX, diffY });
     // puntos obtenidos
-    if (conditionX1 && conditionY1)
-      return alert("bien hecho, tienes 100 puntos");
-    if (diffX <= 40 && diffY <= 40)
-      return alert("bien hecho, tienes 50 puntos");
-    if (diffX <= 60 && diffY <= 60)
-      return alert("bien hecjo, tienes 20 puntos");
+    console.log(diffX <= 20 && diffY <= 20);
+    console.log(diffX <= 40 && diffY <= 40);
+    console.log(diffX <= 60 && diffY <= 60);
+
+    if (diffX <= 20 && diffY <= 20) return showResults(100);
+    if (diffX <= 40 && diffY <= 40) return showResults(50);
+    if (diffX <= 60 && diffY <= 60) return showResults(20);
+    showResults();
+    intento++;
+  }
+
+  function imprimir(text) {
+    let html = `
+    <ul>
+      ${globalScore
+        .map((score, index) => `<li>Intento ${index + 1}: ${score} puntos</li>`)
+        .join("")}
+      <li>Puntos totales: ${globalScore.reduce((acc, el) => el + acc, 0)}</li>
+    </ul>
+    `;
+    results.innerHTML = html;
+  }
+  function showResults(points = 0) {
+    globalScore.push(points);
+    imprimir();
   }
 
   // Obtención de pantalla y creación del pincel
   const pantalla = document.querySelector("canvas");
   const pincel = pantalla.getContext("2d");
+  const results = document.querySelector("div");
   drawBackground();
   pantalla.onclick = shoot;
   let x, y;
+  let intento = 1;
+  const globalScore = [];
   let interval = setInterval(() => {
     clearWindow();
     randomPos();
